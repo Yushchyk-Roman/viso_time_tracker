@@ -18,4 +18,13 @@ export const timeEntriesApi = {
     const response = await api.post<TimeEntry>('/time-entries', data);
     return response.data;
   },
+  
+  delete: async (id: number): Promise<void> => {
+    await api.delete(`/time-entries/${id}`);
+  },
+
+  update: async (id: number, data: Partial<CreateTimeEntryRequest>): Promise<TimeEntry> => {
+    const response = await api.patch<TimeEntry>(`/time-entries/${id}`, data);
+    return response.data;
+  },
 };
